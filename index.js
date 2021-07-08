@@ -57,8 +57,11 @@ inquirer.prompt([
         name: 'github',
         message: 'What is your github username?',
     },
-
-
-
-
 ])
+    .then((userInput) => {
+        const generateHTMLpage = generateUserHTML(userInput);
+
+        fs.writeFile('index.html', generateHTMLpage, (err) =>
+            err ? console.log(err) : console.log('YAY! you have created index.html file with your information!'));
+
+    });
